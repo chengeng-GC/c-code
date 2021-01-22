@@ -6,29 +6,57 @@
 #include <math.h>
 #include <time.h>
 
-//²ÂÊı×ÖÓÎÏ·
-//1.µçÄÔÉú³ÉÒ»¸öËæ»úÊı rand()ºÍsrand()+time() ÒÀÀµstdlib.h
-//2.²ÂÊı×Ö
-//3.¼òÒ×½éÉÜºÍ½çÃæ
+//çŒœæ•°å­—æ¸¸æˆ
+//1.ç”µè„‘ç”Ÿæˆä¸€ä¸ªéšæœºæ•° rand()å’Œsrand()+time() ä¾èµ–stdlib.h
+//2.çŒœæ•°å­—
+//3.ç®€æ˜“ä»‹ç»å’Œç•Œé¢
+void menu() {
+	printf("***********çŒœæ•°å­—æ¸¸æˆ**********\n");
+	printf("*******************************\n");
+	printf("*****   1.play   0.exit   *****\n");
+	printf("*******************************\n");
+}
+
+void game() {
+	int random = rand();//æ¯ä¸€æ¬¡æ¸¸æˆäº§ç”Ÿçš„éšæœºæ•°æ˜¯å›ºå®šçš„ï¼Œè¦åŠ è®¾ç½®
+	printf("éšæœºæ•°å·²ç”Ÿæˆï¼Œæ¸¸æˆå¼€å§‹\n");
+	int guess = 0;
+	printf("è¯·è¾“å…¥æ•°å­—ï¼š");
+	while (random != guess)
+	{
+	
+		scanf("%d", &guess);
+		if (guess < random)
+		{
+			printf("çŒœå°äº†ï¼Œè¯·ç»§ç»­ï¼š");
+		}
+		else if(guess>random)
+		{
+			printf("çŒœå¤§äº†ï¼Œè¯·ç»§ç»­ï¼š");
+		}
+	}
+	printf("æ­å–œä½ ï¼ŒçŒœå¯¹äº†ï¼ï¼ï¼\n");
+}
+
 int main() {
-	srand((unsigned int)time(NULL));//ÉèÖÃËæ»úº¯Êı,ÄÃÊ±¼ä´ÁÀ´ÉèÖÃ
-	//Ê±¼ä´Á:timeº¯Êı£¬ĞèÒªtime.h,ÓĞ²ÎÊı,·µ»ØÀàĞÍÊÇlong,ÒªÇ¿×ª
+	srand((unsigned int)time(NULL));//è®¾ç½®éšæœºå‡½æ•°,æ‹¿æ—¶é—´æˆ³æ¥è®¾ç½®
+	//æ—¶é—´æˆ³:timeå‡½æ•°ï¼Œéœ€è¦time.h,æœ‰å‚æ•°,è¿”å›ç±»å‹æ˜¯long,è¦å¼ºè½¬
 	int i = 0;
 	do
 	{
 		menu();
-		printf("ÇëÑ¡Ôñ£º");
-		 i = getchar();
+		printf("è¯·é€‰æ‹©:");
+		scanf("%d", &i);
 		switch (i)
 		{
 		case 1:
-			break;
 			game();
+			break;
 		case 0:
 			break;
 		default:
-			printf("ÊäÈëÎŞĞ§\n");
-			printf("Á½ÃëºóÖØĞÂ¿ªÊ¼\n");
+			printf("è¾“å…¥æ— æ•ˆ\n");
+			printf("ä¸¤ç§’åé‡æ–°å¼€å§‹\n");
 			Sleep(2000);
 			break;
 		}
@@ -36,28 +64,4 @@ int main() {
 	return 0;
 }
 
-void menu() {
-	printf("*******************************\n");
-	printf("*****   1.play   0.exit   *****\n");
-	printf("*******************************\n");
-}
 
-void game() {
-	int random = rand();//Ã¿Ò»´ÎÓÎÏ·²úÉúµÄËæ»úÊıÊÇ¹Ì¶¨µÄ£¬Òª¼ÓÉèÖÃ
-	printf("Ëæ»úÊıÒÑÉú³É£¬ÓÎÏ·¿ªÊ¼\n");
-	int guess = 0;
-	printf("ÇëÊäÈëÊı×Ö£º");
-	while (guess!=random)
-	{
-		 guess = scanf("%d", guess);
-		if (guess<random)
-		{
-			printf("²ÂĞ¡ÁË£¬Çë¼ÌĞø£º");
-		}
-		else
-		{
-			printf("²Â´óÁË£¬Çë¼ÌĞø£º");
-		}
-	}
-	printf("¹§Ï²Äã£¬²Â¶ÔÁË£¡£¡£¡");
-}
